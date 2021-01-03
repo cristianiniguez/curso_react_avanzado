@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { PhotoCard } from '../PhotoCard';
 
-const getPhotosQuery = gql`
+const GET_PHOTOS = gql`
   query getPhotos($categoryId: ID) {
     photos(categoryId: $categoryId) {
       id
@@ -16,7 +16,7 @@ const getPhotosQuery = gql`
 `;
 
 export const ListOfPhotoCards = ({ categoryId }) => {
-  const { loading, error, data } = useQuery(getPhotosQuery, { variables: { categoryId } });
+  const { loading, error, data } = useQuery(GET_PHOTOS, { variables: { categoryId } });
 
   if (loading) return <h2>Loading...</h2>;
   if (error) return <h2>Internal Server Error</h2>;
