@@ -1,16 +1,20 @@
 import React from 'react';
 
+import { Title, Form, Input, Button } from './styles';
 import { useInputValue } from '../../hooks/useInputValue';
 
-export const UserForm = ({ onSubmit }) => {
+export const UserForm = ({ onSubmit, title }) => {
   const email = useInputValue('');
   const password = useInputValue('');
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type='email' placeholder='Email' {...email} required />
-      <input type='password' placeholder='Password' {...password} required />
-      <button type='submit'>Iniciar sesión</button>
-    </form>
+    <>
+      <Title>{title}</Title>
+      <Form onSubmit={onSubmit}>
+        <Input type='email' placeholder='Email' {...email} required />
+        <Input type='password' placeholder='Password' {...password} required />
+        <Button type='submit'>{title}</Button>
+      </Form>
+    </>
   );
 };
