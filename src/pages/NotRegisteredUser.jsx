@@ -10,7 +10,7 @@ const REGISTER = gql`
 `;
 
 export const NotRegisteredUser = () => {
-  const [register] = useMutation(REGISTER);
+  const [register, { data, loading, error }] = useMutation(REGISTER);
 
   return (
     <Context.Consumer>
@@ -19,9 +19,11 @@ export const NotRegisteredUser = () => {
           register({ variables: { input: { email, password } } }).then(activateAuth);
         };
 
+        const errorMsg = error && 'El usuario ya existe o hay algún problema';
+
         return (
           <>
-            <UserForm title='Registrarse' onSubmit={onSubmit} />
+            <UserForm title='Registrarse' onSubmit={onSubmit} error={errorMsg} disabled={loading} />
             <UserForm title='Iniciar sesión' onSubmit={activateAuth} />
           </>
         );
