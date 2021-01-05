@@ -1,30 +1,52 @@
 import React from 'react';
-import Context from '../Context';
-import { UserForm } from '../components/UserForm';
-import { gql, useMutation } from '@apollo/client';
 
-const REGISTER = gql`
-  mutation signup($input: UserCredentials!) {
-    signup(input: $input)
-  }
-`;
+import Context from '../Context';
+import { RegisterMutation } from '../containers/RegisterMutation';
+import { LoginMutation } from '../containers/LoginMutation';
+import { UserForm } from '../components/UserForm';
 
 export const NotRegisteredUser = () => {
-  const [register, { data, loading, error }] = useMutation(REGISTER);
-
   return (
     <Context.Consumer>
       {({ activateAuth }) => {
-        const onSubmit = ({ email, password }) => {
-          register({ variables: { input: { email, password } } }).then(activateAuth);
-        };
-
-        const errorMsg = error && 'El usuario ya existe o hay algún problema';
-
         return (
           <>
-            <UserForm title='Registrarse' onSubmit={onSubmit} error={errorMsg} disabled={loading} />
-            <UserForm title='Iniciar sesión' onSubmit={activateAuth} />
+            <RegisterMutation>
+              {(register, { data, loading, error }) => {
+                const onSubmit = ({ email, password }) => {
+                  register({ variables: { input: { email, password } } }).then(activateAuth);
+                };
+
+                const errorMsg = error && 'Hay algún problema, puede que el usuario ya exista';
+
+                return (
+                  <UserForm
+                    title='Registrarse'
+                    onSubmit={onSubmit}
+                    error={errorMsg}
+                    disabled={loading}
+                  />
+                );
+              }}
+            </RegisterMutation>
+            <LoginMutation>
+              {(login, { data, loading, error }) => {
+                const onSubmit = ({ email, password }) => {
+                  login({ variables: { input: { email, password } } }).then(activateAuth);
+                };
+
+                const errorMsg = error && 'Los datos parecen incorrectos';
+
+                return (
+                  <UserForm
+                    title='Iniciar sesión'
+                    onSubmit={onSubmit}
+                    error={errorMsg}
+                    disabled={loading}
+                  />
+                );
+              }}
+            </LoginMutation>
           </>
         );
       }}
