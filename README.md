@@ -1,7 +1,11 @@
-## curso-platzi-react-avanzado ⚛️
+## Petgram - Curso de React Avanzado
 
-**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev
+Proyecto del [Curso de React Avanzado](https://platzi.com/clases/react-avanzado/) de Platzi
 
-**¡Sígueme en Twitch para streams sobre desarrollo web!** 👉 https://www.twitch.tv/midudev
+<p align='center'>
+  <img src='https://static.platzi.com/media/achievements/badge-reactjs-avanzado-bc9f61e9-9a1a-485b-b0ad-43a172cdb0aa.png' alt='logo_curso_react_avanzado_platzi' />
+</p>
 
-Repositorio con el código del [Curso Avanzado de React de Platzi](https://platzi.com/cursos/react-avanzado/)
+Visita el proyecto: https://petgram-criniguez.cristianiniguez.vercel.app/
+
+Mis apuntes: https://www.notion.so/Curso-de-React-Avanzado-20c2017befdf458285c33bc13edff13e
