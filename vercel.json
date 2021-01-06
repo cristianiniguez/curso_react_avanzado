@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "petgram-criniguez",
   "builds": [
     {
       "use": "@vercel/static-build",
@@ -15,6 +14,10 @@
     {
       "src": "(.*).json",
       "dest": "/$1.json"
+    },
+    {
+      "src": "(.*).png",
+      "dest": "/$1.png"
     },
     {
       "src": "/.*",
