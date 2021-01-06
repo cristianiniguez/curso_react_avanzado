@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development --history-api-fallback",
+    "serve": "webpack --mode production && npx serve dist -s",
     "serve:dev": "webpack --mode development && npx serve dist -s",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard"
@@ -28,7 +29,8 @@
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1",
-    "webpack-pwa-manifest": "^4.3.0"
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-webpack-plugin": "^6.0.2"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
